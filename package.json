@@ -1,0 +1,21 @@
+{
+  "name": "realtime-burger",
+  "version": "1.0.0",
+  "description": "This is our realtime burger app",
+  "main": "index.js",
+  "scripts": {
+    "dev" : "nodemon server.js",
+    "serve" : "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mahadi Hassan",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
