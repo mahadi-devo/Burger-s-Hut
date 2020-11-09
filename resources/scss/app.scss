@@ -1,4 +1,6 @@
 @import './variables';
+@import '~noty/src/noty.scss';
+@import '~noty/src/themes/mint.scss';
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -28,14 +30,16 @@ section.hero {
   background: $secondary;
 }
 
-.add-to-cart {
+.add-to-cart-home {
   border: 2px solid $primary;
   color: $primary;
   transition: $smooth;
   &:hover {
     background: $primary;
-    border: $pure;
     color: $pure;
+  }
+  &:focus {
+    outline: 0;
   }
 }
 
@@ -44,6 +48,9 @@ section.hero {
   transition: $smooth;
   &:hover {
     background: $primary-hover;
+  }
+  &:focus {
+    outline: 0;
   }
 }
 
@@ -63,4 +70,9 @@ section.login {
       color: $primary-hover;
     }
   }
+}
+
+.noty_theme__mint {
+  border-radius: 50px !important;
+  padding-left: 8px !important;
 }

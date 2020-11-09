@@ -11,103 +11,25 @@
     </div>
 </section>
 <section class="menu container mx-auto py-8">
-    <h1 class="text-xl font-bold mb-8">All Pizzas</h1>
+    <h1 class="text-xl font-bold mb-8">All Burgers</h1>
     <div class="grid grid-cols-4 col-gap-12 row-gap-16">
-        <div class="w-64">
+        <% burgers.forEach(function(burger){ %>
+            <div class="w-64">
             <div>
-                <img class="h-40 mb-4 mx-auto" src="/img/pizza.png" alt="pizza">
+                <img class="h-40 mb-4 mx-auto" src="/img/<%= burger.image %>" alt="burger">
             </div>
             <div class="text-center">
-                <h2 class="mb-4 text-lg">Mahadi</h2>
-                <span class="size py-1 px-4 rounded-full uppercase text-xs">small</span>
+                <h2 class="mb-4 text-lg"><%= burger.name %></h2>
+                <span class="size py-1 px-4 rounded-full uppercase text-xs"><%= burger.size %></span>
                 <div class="flex items-center justify-around mt-6">
-                    <span class="font-bold text-lg">$250</span>
-                    <button class="add-to-cart rounded-full px-6 py-1 flex items-center font-bold">
+                    <span class="font-bold text-lg">$<%= burger.price %></span>
+                    <button data-burger="<%= JSON.stringify(burger) %>" data-id="add-to-cart<%= burger._id %>" class="add-to-cart add-to-cart-home rounded-full px-6 py-1 flex items-center font-bold">
                         <span>+</span>
                         <span class="ml-3">Add</span>
                     </button>
                 </div>
             </div>
         </div>
-        <div class="w-64">
-            <div>
-                <img class="h-40 mb-4 mx-auto" src="/img/pizza.png" alt="pizza">
-            </div>
-            <div class="text-center">
-                <h2 class="mb-4 text-lg">Mahadi</h2>
-                <span class="size py-1 px-4 rounded-full uppercase text-xs">small</span>
-                <div class="flex items-center justify-around mt-6">
-                    <span class="font-bold text-lg">$250</span>
-                    <button class="add-to-cart rounded-full px-6 py-1 flex items-center font-bold">
-                        <span>+</span>
-                        <span class="ml-3">Add</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="w-64">
-            <div>
-                <img class="h-40 mb-4 mx-auto" src="/img/pizza.png" alt="pizza">
-            </div>
-            <div class="text-center">
-                <h2 class="mb-4 text-lg">Mahadi</h2>
-                <span class="size py-1 px-4 rounded-full uppercase text-xs">small</span>
-                <div class="flex items-center justify-around mt-6">
-                    <span class="font-bold text-lg">$250</span>
-                    <button class="add-to-cart rounded-full px-6 py-1 flex items-center font-bold">
-                        <span>+</span>
-                        <span class="ml-3">Add</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="w-64">
-            <div>
-                <img class="h-40 mb-4 mx-auto" src="/img/pizza.png" alt="pizza">
-            </div>
-            <div class="text-center">
-                <h2 class="mb-4 text-lg">Mahadi</h2>
-                <span class="size py-1 px-4 rounded-full uppercase text-xs">small</span>
-                <div class="flex items-center justify-around mt-6">
-                    <span class="font-bold text-lg">$250</span>
-                    <button class="add-to-cart rounded-full px-6 py-1 flex items-center font-bold">
-                        <span>+</span>
-                        <span class="ml-3">Add</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="w-64">
-            <div>
-                <img class="h-40 mb-4 mx-auto" src="/img/pizza.png" alt="pizza">
-            </div>
-            <div class="text-center">
-                <h2 class="mb-4 text-lg">Mahadi</h2>
-                <span class="size py-1 px-4 rounded-full uppercase text-xs">small</span>
-                <div class="flex items-center justify-around mt-6">
-                    <span class="font-bold text-lg">$250</span>
-                    <button class="add-to-cart rounded-full px-6 py-1 flex items-center font-bold">
-                        <span>+</span>
-                        <span class="ml-3">Add</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="w-64">
-            <div>
-                <img class="h-40 mb-4 mx-auto" src="/img/pizza.png" alt="pizza">
-            </div>
-            <div class="text-center">
-                <h2 class="mb-4 text-lg">Mahadi</h2>
-                <span class="size py-1 px-4 rounded-full uppercase text-xs">small</span>
-                <div class="flex items-center justify-around mt-6">
-                    <span class="font-bold text-lg">$250</span>
-                    <button class="add-to-cart rounded-full px-6 py-1 flex items-center font-bold">
-                        <span>+</span>
-                        <span class="ml-3">Add</span>
-                    </button>
-                </div>
-            </div>
-        </div>
+        <% });  %>   
     </div>
 </section>
