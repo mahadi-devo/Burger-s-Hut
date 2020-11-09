@@ -72,6 +72,11 @@ section.login {
   }
 }
 
+section.cart {
+  background: $secondary;
+  min-height: calc(100vh - 86px);
+}
+
 .noty_theme__mint {
   border-radius: 50px !important;
   padding-left: 8px !important;
