@@ -80,3 +80,16 @@ removeSelectedItemFromCart.forEach((btn) => {
     updateCart(burger, mode);
   });
 });
+
+let priceRange = document.querySelector('.price-range');
+let filter = document.querySelector('.filter');
+
+if (priceRange || filter) {
+  document.querySelector('.price-range').addEventListener('change', (e) => {
+    document.querySelector('#filtered-price').innerHTML = e.currentTarget.value;
+  });
+
+  document.querySelector('.filter').addEventListener('click', (e) => {
+    document.querySelector('#filter-tab').classList.toggle('filter-toggle');
+  });
+}

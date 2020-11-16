@@ -1,26 +1,44 @@
 <section class="login flex justify-center items-center">
     <div class="w-full max-w-md p-2">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <div class="mb-4">
+    <form action="/register" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
             Name
         </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="name" placeholder="Enter your Name">
+        <input name="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="name" placeholder="Enter your Name" value="<%= messages.name %>">
+        <% for (const property in error.errors) { %>
+            <% if (property == 'name') { %>
+                <span class="text-red-500 text-sm"><%= error.errors[property] %></span>
+            <% } %>
+        <% } %>
         </div>
         <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
             Email
         </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Enter your email">
+        <input name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Enter your email" value="<%= messages.email %>">
+        <% for (const property in error.errors) { %>
+            <% if (property == 'email') { %>
+                <span class="text-red-500 text-sm"><%= error.errors[property] %></span>
+            <% } %>
+        <% } %>
+        <% if(error && error.length > 0) { %>
+            <span class="text-red-500 text-sm"><%= error %></span>
+        <% } %>
         </div>
         <div class="mb-6">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
             Password
         </label>
-        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
+        <input name="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
+        <% for (const property in error.errors) { %>
+            <% if (property == 'password') { %>
+                <span class="text-red-500 text-sm"><%= error.errors[property] %></span>
+            <% } %>
+        <% } %>
         </div>
-        <div class="flex items-center justify-between">
-        <button class="btn-primary rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+        <div class="flex items-center justify-between mt-3">
+        <button class="btn-primary rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
             Register
         </button>
         <a class="inline-block align-baseline font-bold text-sm" href="/login">

@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <span id="price<%= pizza.item._id %>" class="w-1/5 flex items-center justify-center font-bold">$<%= pizza.item.price * session.cart.items[pizza.item._id].qty %></span>
-                    <span class="w-1/5 flex items-center justify-center font-bold remove-selected-item-from-cart cursor-pointer" data-id="remove-selected-item-from-cart<%= pizza.item._id %>" data-burger="<%= JSON.stringify(pizza.item) %>">❌</span>
+                    <span class="w-1/5 flex items-center justify-center text-primary remove-selected-item-from-cart cursor-pointer text-sm" data-id="remove-selected-item-from-cart<%= pizza.item._id %>" data-burger="<%= JSON.stringify(pizza.item) %>">Remove</span>
                 </div>
             <% } %>
         </div>

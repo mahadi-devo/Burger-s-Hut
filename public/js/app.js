@@ -5326,6 +5326,17 @@ removeSelectedItemFromCart.forEach(function (btn) {
     updateCart(burger, mode);
   });
 });
+var priceRange = document.querySelector('.price-range');
+var filter = document.querySelector('.filter');
+
+if (priceRange || filter) {
+  document.querySelector('.price-range').addEventListener('change', function (e) {
+    document.querySelector('#filtered-price').innerHTML = e.currentTarget.value;
+  });
+  document.querySelector('.filter').addEventListener('click', function (e) {
+    document.querySelector('#filter-tab').classList.toggle('filter-toggle');
+  });
+}
 
 /***/ }),
 
