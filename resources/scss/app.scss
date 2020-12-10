@@ -63,7 +63,7 @@ section.cart {
 
 section.login {
   background: $secondary;
-  min-height: calc(100vh - 86px);
+  min-height: calc(100vh - 141px);
   a {
     color: $primary;
     &:hover {
@@ -103,4 +103,26 @@ section.cart {
 
 .price-range {
   width: 300px;
+}
+
+.bg-color {
+  background-color: $primary;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+.logout:hover {
+  color: $primary-hover;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

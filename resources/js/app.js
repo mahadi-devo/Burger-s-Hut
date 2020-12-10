@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Noty from 'noty';
+import lozad from 'lozad';
 
 let addToCart = document.querySelectorAll('.add-to-cart');
 let removeFromCart = document.querySelectorAll('.remove-from-cart');
@@ -93,3 +94,12 @@ if (priceRange || filter) {
     document.querySelector('#filter-tab').classList.toggle('filter-toggle');
   });
 }
+
+lozad('.lozad', {
+  load: function(el) {
+    el.src = el.dataset.src;
+    el.onload = function() {
+      el.classList.add('fade');
+    };
+  },
+}).observe();

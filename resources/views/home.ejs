@@ -6,11 +6,11 @@
             <button class="px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary">Order Now</button>
         </div>
         <div class="w-1/2">
-            <img src="/img/hero-pizza.png" alt="">
+            <img data-src="/img/hero-burger.png" alt="hero-image" class="lozad" style="height: 550px;">
         </div>
     </div>
 </section>
-<section class="menu container mx-auto py-8">
+<section class="menu container mx-auto py-8 mb-10">
     <div class="flex items-center justify-between mb-8">
         <h1 class="text-xl font-bold">All Burgers</h1>
         <div class="float-right border border-gray-500 px-2 py-2 flex items-center cursor-pointer rounded-full filter hover:bg-gray-100">
@@ -20,7 +20,7 @@
         </div>
     </div>
     
-    <form action="/" method="get">
+    <form action="/" method="GET">
         <% if(large || medium || small || queryPrice) {%>
         <div id="filter-tab" class="flex items-center justify-center mb-8 border border-gray-500 rounded-full bg-gray-100 py-4 px-4">
         <% } else { %>
@@ -53,10 +53,11 @@
             <div class="flex items-center px-2">
                 <% if(queryPrice) { %>
                     <input class="mr-2 price-range" name="price[lte]" type="range" min="200" max="1000" step="100" value="<%= queryPrice %>"/>
+                    <label class="text-sm">price is less than or equal to <span id="filtered-price" class="font-bold"><%= queryPrice %><span></label>
                 <% } else { %>
                     <input class="mr-2 price-range" name="price[lte]" type="range" min="200" max="1000" step="100" value="300"/>
-                <% } %>
-                <label class="text-sm">price is less than or equal to <span id="filtered-price" class="font-bold">300<span></label>
+                    <label class="text-sm">price is less than or equal to <span id="filtered-price" class="font-bold">300<span></label>
+                <% } %>  
             </div>
             <button type="submit"class="bg-blue-500 hover:bg-blue-700 text-white px-4 text-sm rounded-full ml-2 py-1">filter</button>
             <a href="/" class="bg-transparent bg-gray-300 hover:bg-gray-400 text-black px-4 text-sm rounded-full ml-2 py-1">Reset</a>
@@ -69,7 +70,7 @@
         <% burgers.forEach(function(burger){ %>
             <div class="w-64">
             <div>
-                <img class="h-40 mb-4 mx-auto" src="/img/<%= burger.image %>" alt="burger">
+                <img class="h-40 mb-4 mx-auto lozad" data-src="/img/<%= burger.image %>" alt="burger" style="height: 160px;">
             </div>
             <div class="text-center">
                 <h2 class="mb-4 text-lg"><%= burger.name %></h2>

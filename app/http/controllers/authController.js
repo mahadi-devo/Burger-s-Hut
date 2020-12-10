@@ -1,3 +1,4 @@
+const passport = require('passport');
 const User = require('../../models/user');
 
 function authController() {
@@ -8,7 +9,31 @@ function authController() {
     register(req, res) {
       res.render('auth/register');
     },
-    async postRegister(req, res) {
+    async postLogin(req, res, next) {
+      passport.authenticate('local', (err, user, info) => {
+        if (err) {
+          req.flash('email', req.body.email);
+          req.flash('error', info.message);
+          return next(err);
+        }
+        if (!user) {
+          req.flash('email', req.body.email);
+          req.flash('error', info.message);
+          return res.redirect('/login');
+        }
+
+        req.logIn(user, (err) => {
+          if (err) {
+            req.flash('email', req.body.email);
+            req.flash('error', info.message);
+            return next(err);
+          }
+          req.flash('success', `Welcome back ${user.name}`);
+          return res.redirect('/');
+        });
+      })(req, res, next);
+    },
+    postRegister(req, res) {
       const { name, email, password } = req.body;
 
       // Check if email exists
@@ -43,6 +68,10 @@ function authController() {
             error: error,
           });
         });
+    },
+    logout(req, res) {
+      req.logout();
+      return res.redirect('/login');
     },
   };
 }

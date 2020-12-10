@@ -7,6 +7,8 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('express-flash');
+const passport = require('passport');
+const morgan = require('morgan');
 const MongoDbStore = require('connect-mongo')(session);
 
 // Load env
@@ -46,6 +48,16 @@ app.use(
   })
 );
 
+// Passport Config
+const passportInit = require('./app/config/passport');
+passportInit(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+// Dev logger Middleware
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
 app.use(flash());
 
 // Assets
@@ -56,6 +68,7 @@ app.use(express.json());
 // Global middleware
 app.use((req, res, next) => {
   res.locals.session = req.session;
+  res.locals.user = req.user;
   res.locals.error = req.flash('error');
   res.locals.success = req.flash('success');
   next();
@@ -68,6 +81,15 @@ app.set('view engine', 'ejs');
 require('./routes/web')(app);
 
 const PORT = process.env.PORT || 3000;
+
+app.use((req, res, next) => {
+  res.status(404).send("Sorry can't find that!");
+});
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 app.listen(PORT, () => console.log(`Server is Listening to port ${PORT}`));
 

@@ -3,6 +3,7 @@ function homeController() {
   return {
     async index(req, res) {
       const { size, price } = req.query;
+
       let large, medium, small, queryPrice;
       let query;
 
@@ -42,16 +43,26 @@ function homeController() {
         (match) => `$${match}`
       );
 
-      query = Menu.find(JSON.parse(queryStr));
-      const burgers = await query;
-      return res.render('home', {
-        burgers: burgers,
-        count: burgers.length,
-        large,
-        medium,
-        small,
-        queryPrice,
-      });
+      try {
+        query = Menu.find(JSON.parse(queryStr));
+        const burgers = await query;
+
+        if (burgers.length === 0) {
+          res.redirect('/');
+        }
+
+        return res.render('home', {
+          burgers: burgers,
+          count: burgers.length,
+          large,
+          medium,
+          small,
+          queryPrice,
+        });
+      } catch (err) {
+        console.log(err);
+        res.redirect('/');
+      }
     },
   };
 }
