@@ -2,6 +2,10 @@ const passport = require('passport');
 const User = require('../../models/user');
 
 function authController() {
+  const _getRedirectUrl = (req) => {
+    return req.user.role === 'admin' ? 'admin/orders' : 'customer/orders';
+  };
+
   return {
     login(req, res) {
       res.render('auth/login');
@@ -36,7 +40,11 @@ function authController() {
             return next(err);
           }
           req.flash('success', `Welcome back ${user.name}`);
-          return res.redirect('/');
+          res.header(
+            'Cache-Control',
+            'no-cache, private, no-store, must-revalidate,max-stale=0, post-check=0, pre-check=0'
+          );
+          return res.redirect(_getRedirectUrl(req));
         });
       })(req, res, next);
     },
@@ -65,6 +73,10 @@ function authController() {
         .save()
         .then((user) => {
           // Login
+          res.header(
+            'Cache-Control',
+            'no-cache, private, no-store, must-revalidate,max-stale=0, post-check=0, pre-check=0'
+          );
           req.flash('success', `Hi, ${user.name} welcome to Burger's Hut`);
           return res.redirect('/login');
         })

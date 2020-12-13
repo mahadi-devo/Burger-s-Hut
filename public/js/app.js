@@ -27025,12 +27025,14 @@ lozad__WEBPACK_IMPORTED_MODULE_2___default()('.lozad', {
     };
   }
 }).observe(); // Remove alert messages after 2s
-// const alertMsg = document.querySelector('#success-alert');
-// if (alertMsg) {
-//   setTimeout(() => {
-//     alertMsg.remove();
-//   }, 2000);
-// }
+
+var alertMsg = document.querySelector('#success-alert');
+
+if (alertMsg) {
+  setTimeout(function () {
+    alertMsg.remove();
+  }, 2000);
+}
 
 Object(_admin__WEBPACK_IMPORTED_MODULE_3__["initAdmin"])();
 

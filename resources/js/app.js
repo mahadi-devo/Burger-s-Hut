@@ -106,12 +106,12 @@ lozad('.lozad', {
 }).observe();
 
 // Remove alert messages after 2s
-// const alertMsg = document.querySelector('#success-alert');
+const alertMsg = document.querySelector('#success-alert');
 
-// if (alertMsg) {
-//   setTimeout(() => {
-//     alertMsg.remove();
-//   }, 2000);
-// }
+if (alertMsg) {
+  setTimeout(() => {
+    alertMsg.remove();
+  }, 2000);
+}
 
 initAdmin();

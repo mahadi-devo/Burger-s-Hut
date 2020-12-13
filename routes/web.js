@@ -4,6 +4,8 @@ const cartController = require('../app/http/controllers/customers/cartController
 const orderController = require('../app/http/controllers/customers/orderController.js');
 const adminOrderController = require('../app/http/controllers/admin/orderController.js');
 const guest = require('../app/http/middleware/guest.js');
+
+// Middlewares
 const auth = require('../app/http/middleware/auth.js');
 const admin = require('../app/http/middleware/admin.js');
 

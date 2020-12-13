@@ -1,6 +1,6 @@
 <section class="orders light-section">
     <div class="container mx-auto pt-12">
-        <h1 class="font-bold text-lg mb-4">All orders</h1>
+        <h1 class="font-bold text-lg mb-4">My orders</h1>
         <% if(messages.order) { %>
         <div id="success-alert" class="flex items-center bg-teal-800 text-white text-sm font-bold px-4 py-3"
             role="alert">
@@ -36,7 +36,7 @@
                 <% }) %> 
             <% } else { %>
             <tr>
-                <td class="border border-red-500 px-4 py-2 text-red-600 font-medium">No orders found!</td>
+                <td class="border border-red-500 px-4 py-2 text-red-600 font-medium text-center" colspan="4">No orders found!</td>
             </tr>
             <% } %>
             </tbody>
