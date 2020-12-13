@@ -115,3 +115,11 @@ if (alertMsg) {
 }
 
 initAdmin();
+
+// Change Order Status
+
+let hiddenInput = document.querySelector('#hiddenInput');
+
+let order = document.querySelector('#hiddenInput')
+  ? document.querySelector('#hiddenInput').value
+  : null;

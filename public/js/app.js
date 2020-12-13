@@ -27034,7 +27034,10 @@ if (alertMsg) {
   }, 2000);
 }
 
-Object(_admin__WEBPACK_IMPORTED_MODULE_3__["initAdmin"])();
+Object(_admin__WEBPACK_IMPORTED_MODULE_3__["initAdmin"])(); // Change Order Status
+
+var hiddenInput = document.querySelector('#hiddenInput');
+var order = document.querySelector('#hiddenInput') ? document.querySelector('#hiddenInput').value : null;
 
 /***/ }),
 

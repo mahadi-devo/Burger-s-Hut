@@ -1,33 +1,38 @@
 <section class="cart py-16">
     <% if(session.cart && JSON.stringify(session.cart.items) !== '{}') { %>
-    <div class="order container mx-auto w-1/2">
+    <div class="order container mx-auto xl:w-1/2">
         <div class="flex items-center border-b border-gray-300 pb-4">
             <img src="/img/cart-black.png" alt="cart">
             <h1 class="font-bold ml-4 text-2xl">Order Summary</h1>
         </div>
-        <div class="pizza-list">
-            <% for(let pizza of Object.values(session.cart.items)) { %>
-                <div id="item<%= pizza.item._id %>" class="flex my-8">
-                    <div class="w-2/5 flex items-center">
-                        <img class="w-24" src="/img/<%= pizza.item.image %>" alt="burger-image">
-                        <div class="ml-4">
-                            <h1 class="font-bold"><%= pizza.item.name %></h1>
-                            <span><%= pizza.item.size %></span>
+        <div class="burger-list">
+            <% for(let burger of Object.values(session.cart.items)) { %>
+                <div id="item<%= burger.item._id %>" class="flex flex items-center justify-center my-8 text-xs md:text-base">
+                    <div class="1/5 order-1 flex items-center">
+                        <img class="w-24" src="/img/<%= burger.item.image %>" alt="burger-image">
+                    </div>
+                    <div class="w-2/5 order-2 flex-column md:flex items-center md:justify-between ml-4 p-2">
+                        <div>
+                            <h1 class="font-bold"><%= burger.item.name %></h1>
+                            <span><%= burger.item.size %></span>
+                        </div>
+                        <div class="flex items-center justify-start md:justify-between">
+                            <div class="p-1 m-0 border text-center bg-gray-800 hover:bg-gray-900 cursor-pointer remove-from-cart" data-id="remove-from-cart<%= burger.item._id %>" data-burger="<%= JSON.stringify(burger.item) %>">
+                                <span class="text-white">&#8722;</span>
+                            </div>
+                            <div class="p-1 m-0 border">
+                                <span id="<%= burger.item._id %>" class="font-bold qtyCounter"><%= session.cart.items[burger.item._id].qty %></span>
+                            </div>
+                            <div class="p-1
+                            m-0 border text-center bg-gray-800 hover:bg-gray-900 cursor-pointer add-to-cart" data-id="add-to-cart<%= burger.item._id %>" data-burger="<%= JSON.stringify(burger.item) %>">
+                                <span class="text-white">+</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="w-2/5 flex items-center justify-center">
-                        <div class="p-2 m-0 border text-center bg-gray-800 hover:bg-gray-900 cursor-pointer remove-from-cart" data-id="remove-from-cart<%= pizza.item._id %>" data-burger="<%= JSON.stringify(pizza.item) %>">
-                            <span class="text-white">&#8722;</span>
-                        </div>
-                        <div class="p-2 m-0 border">
-                            <span id="<%= pizza.item._id %>" class="font-bold qtyCounter"><%= session.cart.items[pizza.item._id].qty %></span>
-                        </div>
-                        <div class="p-2 m-0 border text-center bg-gray-800 hover:bg-gray-900 cursor-pointer add-to-cart" data-id="add-to-cart<%= pizza.item._id %>" data-burger="<%= JSON.stringify(pizza.item) %>">
-                            <span class="text-white">+</span>
-                        </div>
-                    </div>
-                    <span id="price<%= pizza.item._id %>" class="w-1/5 flex items-center justify-center font-bold">$<%= pizza.item.price * session.cart.items[pizza.item._id].qty %></span>
-                    <span class="w-1/5 flex items-center justify-center text-primary remove-selected-item-from-cart cursor-pointer text-sm" data-id="remove-selected-item-from-cart<%= pizza.item._id %>" data-burger="<%= JSON.stringify(pizza.item) %>">Remove</span>
+                    <div class="order-3 w-2/5 flex-column md:flex  items-center justify-center md:justify-between p-2 ml-4">
+                        <span id="price<%= burger.item._id %>" class="font-bold p-2">$<%= burger.item.price * session.cart.items[burger.item._id].qty %></span>
+                        <span class="text-primary remove-selected-item-from-cart cursor-pointer p-2 md:text-sm" data-id="remove-selected-item-from-cart<%= burger.item._id %>" data-burger="<%= JSON.stringify(burger.item) %>">Remove</span>
+                    </div> 
                 </div>
             <% } %>
         </div>

@@ -28,8 +28,8 @@
             <% if(records.length) { %>
                 <% records.forEach(order => { %>
                     <tr>
-                        <td class="border border-red-500 px-4 py-2 text-red-900 font-bold"><a href="/" class="link"><%= order._id %></a></td>
-                        <td class="border border-red-500 px-4 py-2 text-center text-red-600 font-medium"><%= order.address %></td>
+                        <td class="border border-red-500 px-4 py-2 text-red-900 font-bold"><a href="/customer/orders/<%= order._id %>" class="link"><%= order._id %></a></td>
+                        <td class="border border-gray-500 px-4 py-2 text-center text-red-600 font-medium"><%= order.address %></td>
                         <td class="border border-red-500 px-4 py-2 text-center text-red-600 font-medium"><%= order.phone %></td>
                         <td class="border border-red-500 px-4 py-2 text-center text-red-600 font-medium"><%= moment(order.createdAt).format('hh:mm A') %></td>
                     </tr>
