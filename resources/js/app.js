@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Noty from 'noty';
 import lozad from 'lozad';
+import { initAdmin } from './admin';
 
 let addToCart = document.querySelectorAll('.add-to-cart');
 let removeFromCart = document.querySelectorAll('.remove-from-cart');
@@ -103,3 +104,14 @@ lozad('.lozad', {
     };
   },
 }).observe();
+
+// Remove alert messages after 2s
+// const alertMsg = document.querySelector('#success-alert');
+
+// if (alertMsg) {
+//   setTimeout(() => {
+//     alertMsg.remove();
+//   }, 2000);
+// }
+
+initAdmin();

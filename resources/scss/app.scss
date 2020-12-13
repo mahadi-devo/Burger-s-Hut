@@ -61,7 +61,8 @@ section.cart {
   }
 }
 
-section.login {
+section.login,
+section.orders {
   background: $secondary;
   min-height: calc(100vh - 141px);
   a {
@@ -125,4 +126,9 @@ section.cart {
   to {
     opacity: 1;
   }
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
 }

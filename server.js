@@ -80,7 +80,7 @@ app.set('views', path.join(__dirname, 'resources/views'));
 app.set('view engine', 'ejs');
 require('./routes/web')(app);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3500;
 
 app.use((req, res, next) => {
   res.status(404).send("Sorry can't find that!");
@@ -89,6 +89,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
+  return res.redirect('/');
 });
 
 app.listen(PORT, () => console.log(`Server is Listening to port ${PORT}`));

@@ -11,8 +11,9 @@
 <body>
     <nav class="container mx-auto flex items-center justify-between py-4">
         <div class="flex items-center justify-around">
-            <img data-src="/img/logo-burger.png" alt="logo" style="height: 53px;" class="mr-2 lozad">
-             <h4 class="font-bold">Burger's Hut</h4>
+            <a href="/"><img data-src="/img/logo-burger.png" alt="logo" style="height: 53px;" class="mr-2 lozad"></a>
+            <a href="/"><h4 class="font-bold">Burger's Hut</h4></a>
+            
         </div>
         <div>
             <ul class="flex items-center">
@@ -33,7 +34,7 @@
         </div>
     </nav>
     <% if(success && success.length > 0) { %>
-    <div class="bg-teal-900 text-center py-1 lg:px-4">
+    <div id="success-alert" class="bg-teal-900 text-center py-1 lg:px-4">
         <div class="p-2 bg-teal-800 items-center text-teal-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
             <span class="flex rounded-full bg-teal-500 uppercase px-2 py-1 text-xs font-bold mr-3">Member</span>
             <span class="font-semibold mr-2 text-left flex-auto"><%= success %></span>

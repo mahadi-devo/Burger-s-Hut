@@ -369,16 +369,19 @@ section.cart .amount {
   color: #e32227;
 }
 
-section.login {
+section.login,
+section.orders {
   background: #f8f8f8;
   min-height: calc(100vh - 141px);
 }
 
-section.login a {
+section.login a,
+section.orders a {
   color: #e32227;
 }
 
-section.login a:hover {
+section.login a:hover,
+section.orders a:hover {
   color: #b23301;
 }
 
@@ -449,5 +452,10 @@ section.cart {
   to {
     opacity: 1;
   }
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
 }
 

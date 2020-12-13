@@ -3,7 +3,7 @@ function guest(req, res, next) {
     return next();
   }
 
-  return redirect('/');
+  return res.redirect('/');
 }
 
 module.exports = guest;

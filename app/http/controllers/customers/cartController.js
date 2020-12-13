@@ -3,7 +3,6 @@ function cartController() {
   return {
     async cart(req, res) {
       const burgers = await Menu.find();
-      console.log(burgers);
       res.render('customers/cart', { burgers: burgers });
     },
     update(req, res) {

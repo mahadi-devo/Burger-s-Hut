@@ -10,6 +10,13 @@ function authController() {
       res.render('auth/register');
     },
     async postLogin(req, res, next) {
+      const { email, password } = req.body;
+
+      if (!email || !password) {
+        req.flash('error', 'All fields are required');
+        return res.redirect('/login');
+      }
+
       passport.authenticate('local', (err, user, info) => {
         if (err) {
           req.flash('email', req.body.email);
@@ -59,7 +66,7 @@ function authController() {
         .then((user) => {
           // Login
           req.flash('success', `Hi, ${user.name} welcome to Burger's Hut`);
-          return res.redirect('/');
+          return res.redirect('/login');
         })
         .catch((error) => {
           req.flash('name', name);
