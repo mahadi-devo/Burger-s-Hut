@@ -82,6 +82,7 @@ npm run dev
         </ul>
         </li>
     <li>Responsive</li>
+    <li>Lazy Loading</li>
 </ul>
 <ul>
     <li>Deployment
