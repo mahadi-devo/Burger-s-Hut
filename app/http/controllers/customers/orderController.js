@@ -9,7 +9,7 @@ function orderController() {
 
       if (!phone || !address) {
         req.flash('error', 'All fields are required');
-        return res.redirect('/cart');
+        return res.redirect('back');
       }
 
       const order = new Order({
@@ -22,9 +22,14 @@ function orderController() {
       order
         .save()
         .then((result) => {
-          req.flash('order', 'Order placed Successfully');
-          delete req.session.cart;
-          return res.redirect('/customer/orders');
+          Order.populate(result, { path: 'customerId' }, (err, placedOrder) => {
+            req.flash('order', 'Order placed Successfully');
+            //  Emit
+            const eventEmitter = req.app.get('eventEmitter');
+            eventEmitter.emit('orderPlaced', placedOrder);
+            delete req.session.cart;
+            return res.redirect('/customer/orders');
+          });
         })
         .catch((err) => {
           req.flash('error', 'Something went wrong!');

@@ -10,6 +10,7 @@ const flash = require('express-flash');
 const passport = require('passport');
 const morgan = require('morgan');
 const MongoDbStore = require('connect-mongo')(session);
+const Emitter = require('events');
 
 // Load env
 dotenv.config({ path: './app/config/config.env' });
@@ -36,6 +37,10 @@ let mongoStore = new MongoDbStore({
   mongooseConnection: connection,
   collection: 'sessions',
 });
+
+// Event Emitter
+const eventEmitter = new Emitter();
+app.set('eventEmitter', eventEmitter);
 
 // Session config
 app.use(
@@ -92,10 +97,28 @@ app.use((err, req, res, next) => {
   return res.redirect('/');
 });
 
-app.listen(PORT, () => console.log(`Server is Listening to port ${PORT}`));
+const server = app.listen(PORT, () =>
+  console.log(`Server is Listening to port ${PORT}`)
+);
 
 process.on('unhandledRejection', (err, promise) => {
   console.log(`Error: ${err.message}`);
   // Close server & exit process
   // server.close(() => process.exit(1));
+});
+
+const io = require('socket.io')(server);
+io.on('connection', (socket) => {
+  //  Join
+  socket.on('join', (roomName) => {
+    socket.join(roomName);
+  });
+});
+
+eventEmitter.on('orderUpdated', (data) => {
+  io.to(`order_${data.id}`).emit('orderUpdated', data);
+});
+
+eventEmitter.on('orderPlaced', (data) => {
+  io.to(`adminRoom`).emit('orderPlaced', data);
 });

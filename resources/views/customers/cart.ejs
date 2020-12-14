@@ -44,6 +44,9 @@
                 <span id="totalPrice" class="amount text-2xl font-bold ml-2">$<%= session.cart.totalPrice %></span>
             </div>
             <% if(user) { %>
+                <% if(messages.error) { %>
+                        <span class="text-red-500 text-sm">Hello<%= messages.error %></span>
+                <% } %>
             <div>
                 <form action="/orders" method="POST" class="mt-12">
                     <input type="text" name="phone" class="border border-gray-400 p-2 w-1/2 mb-4" placeholder="Phone number"/>
