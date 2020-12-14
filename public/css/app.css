@@ -373,20 +373,23 @@ section.cart .amount {
 
 section.login,
 section.orders,
-section.status {
+section.status,
+section.errors {
   background: #f8f8f8;
   min-height: calc(100vh - 141px);
 }
 
 section.login a,
 section.orders a,
-section.status a {
+section.status a,
+section.errors a {
   color: #e32227;
 }
 
 section.login a:hover,
 section.orders a:hover,
-section.status a:hover {
+section.status a:hover,
+section.errors a:hover {
   color: #b23301;
 }
 
@@ -539,6 +542,10 @@ section.cart {
   float: right;
   font-size: 14px;
   margin-top: 8px;
+}
+
+.dropdown-show {
+  display: block !important;
 }
 
 @-webkit-keyframes fade {

@@ -11,6 +11,12 @@ const passport = require('passport');
 const morgan = require('morgan');
 const MongoDbStore = require('connect-mongo')(session);
 const Emitter = require('events');
+const mongoSanitize = require('express-mongo-sanitize');
+const helmet = require('helmet');
+const xss = require('xss-clean');
+const rateLimit = require('express-rate-limit');
+const hpp = require('hpp');
+const cors = require('cors');
 
 // Load env
 dotenv.config({ path: './app/config/config.env' });
@@ -58,6 +64,10 @@ const passportInit = require('./app/config/passport');
 passportInit(passport);
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 // Dev logger Middleware
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -65,10 +75,34 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(flash());
 
+// Sanitize data
+app.use(mongoSanitize());
+
+// Set security headers
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
+
+// Prevent XSS attacks
+app.use(xss());
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 mins
+  max: 500,
+});
+app.use(limiter);
+
+// Prevent http param pollution
+app.use(hpp());
+
+// Enable CORS
+app.use(cors());
+
 // Assets
 app.use(express.static('public'));
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 // Global middleware
 app.use((req, res, next) => {
@@ -87,14 +121,13 @@ require('./routes/web')(app);
 
 const PORT = process.env.PORT || 3500;
 
-app.use((req, res, next) => {
-  res.status(404).send("Sorry can't find that!");
+app.use((req, res) => {
+  res.status(404).render('errors/404');
 });
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send('Something broke!');
-  return res.redirect('/');
+  res.status(500).redirect('/');
 });
 
 const server = app.listen(PORT, () =>

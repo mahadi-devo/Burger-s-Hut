@@ -115,6 +115,15 @@ if (alertMsg) {
   }, 2000);
 }
 
+const dropdownToggle = document.querySelector('#toggle');
+const dropdown = document.querySelector('#dropdown');
+
+if (dropdownToggle) {
+  dropdownToggle.addEventListener('click', () => {
+    dropdown.classList.toggle('dropdown-show');
+  });
+}
+
 // Change Order Status
 let statuses = document.querySelectorAll('.status_line');
 let hiddenInput = document.querySelector('#hiddenInput');
@@ -155,7 +164,6 @@ updateStatus(order);
 // Socket
 let socket = io();
 
-initAdmin(socket);
 // Join
 if (order) {
   socket.emit('join', `order_${order._id}`);
@@ -164,6 +172,7 @@ if (order) {
 let AdminAreaPath = window.location.pathname;
 
 if (AdminAreaPath.includes('admin')) {
+  initAdmin(socket);
   socket.emit('join', 'adminRoom');
 }
 

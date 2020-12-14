@@ -63,7 +63,8 @@ section.cart {
 
 section.login,
 section.orders,
-section.status {
+section.status,
+section.errors {
   background: $secondary;
   min-height: calc(100vh - 141px);
   a {
@@ -222,6 +223,10 @@ section.cart {
   float: right;
   font-size: 14px;
   margin-top: 8px;
+}
+
+.dropdown-show {
+  display: block !important;
 }
 
 @keyframes fade {

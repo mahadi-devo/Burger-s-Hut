@@ -16,12 +16,17 @@
     "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
     "connect-mongo": "^3.2.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
     "express-flash": "0.0.2",
+    "express-mongo-sanitize": "^2.0.1",
+    "express-rate-limit": "^5.2.3",
     "express-session": "^1.17.1",
+    "helmet": "^4.2.0",
+    "hpp": "^0.2.3",
     "lozad": "^1.16.0",
     "moment": "^2.29.1",
     "mongoose": "^5.10.13",
@@ -29,7 +34,8 @@
     "noty": "^3.2.0-beta",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "socket.io": "^3.0.4"
+    "socket.io": "^3.0.4",
+    "xss-clean": "^0.1.1"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",

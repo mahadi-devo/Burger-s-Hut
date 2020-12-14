@@ -14,16 +14,62 @@
         <div class="flex items-center justify-center">
             <a href="/"><img data-src="/img/logo-burger.png" alt="logo" class="mr-2 lozad"></a>
             <a href="/"><h4 class="font-bold text-xs md:text-base pl-2" style="">Burger's Hut</h4></a>
-            
         </div>
         <div>
             <ul class="flex items-center">
                 <li class="ml-6 text-xs md:text-base"><a href="/">Menu</a></li>
                 <li class="ml-6 text-xs md:text-base"><a href="">Offers</a></li>
                 <% if(user) { %>
-                    <form id="logout" action="/logout" method="POST">
-                        <a onclick="document.getElementById('logout').submit()" href="#" class="ml-6 logout text-xs md:text-base">Logout</a>
-                    </form>
+                    <% if(user.role === 'customer') { %>
+                        <li class="ml-6 text-xs md:text-base">
+                        <div class="relative inline-block text-left">
+                            <div>
+                                <button id="toggle" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500 text-red-600" id="options-menu" aria-haspopup="true" aria-expanded="true">
+                                <%= user.name %><i class="las la-user-tie text-xl font-bold"></i>
+                                <!-- Heroicon name: chevron-down -->
+                                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                                </button>
+                            </div>
+                            <div id="dropdown" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" style="display: none">
+                            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                            <a href="/customer/orders" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">My Orders</a>
+                            <form id="logout" action="/logout" method="POST">
+                                <a  class="logout block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" onclick="document.getElementById('logout').submit()" href="#" role="menuitem">
+                                Log out
+                                </a>
+                            </form>
+                            </div>
+                        </div>
+                        </div>
+                    </li>
+                    <% } else { %>
+                        <li class="ml-6 text-xs md:text-base">
+                        <div class="relative inline-block text-left">
+                            <div>
+                                <button id="toggle" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500 text-red-600" id="options-menu" aria-haspopup="true" aria-expanded="true">
+                                <%= user.name %><i class="las la-user-tie text-xl font-bold"></i>
+                                <!-- Heroicon name: chevron-down -->
+                                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                                </button>
+                            </div>
+                            <div id="dropdown" class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5" style="display: none">
+                            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                            <a href="/admin/orders" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">All Orders</a>
+                            <form id="logout" action="/logout" method="POST">
+                                <a  class="logout block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900" onclick="document.getElementById('logout').submit()" href="#" role="menuitem">
+                                Log out
+                                </a>
+                            </form>
+                            </div>
+                        </div>
+                        </div>
+                    </li>
+                    <% } %>         
+                    
                 <% } else { %>
                     <li class="ml-6 text-xs md:text-base"><a href="/register">Register</a></li>
                     <li class="ml-6 text-xs md:text-base"><a href="/login">Login</a></li>
@@ -36,7 +82,7 @@
     </nav>
     <% if(success && success.length > 0) { %>
     <div id="success-alert" class="bg-teal-900 text-center py-1 lg:px-4">
-        <div class="p-2 bg-teal-800 items-center text-teal-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+        <div class="p-2 bg-teal-800 jutify-center items-center text-teal-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
             <span class="flex rounded-full bg-teal-500 uppercase px-2 py-1 text-xs font-bold mr-3">Member</span>
             <span class="font-semibold mr-2 text-left flex-auto"><%= success %></span>
             <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
