@@ -7,6 +7,12 @@
 
 The App is live at [Burger's Hut](https://github.com/mahadi-devo/Burger-s-Hut)
 
+## Screen Shots
+
+![Screenshot](screenshot1.png)
+![Screenshot](screenshot2.png)
+![Screenshot](screenshot3.JPG)
+
 ## Login Credentials
 
 <b> Guest Role </b>
