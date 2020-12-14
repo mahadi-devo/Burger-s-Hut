@@ -5,7 +5,7 @@
 
 ## Demo
 
-The App is live at [Burger's Hut](https://github.com/mahadi-devo/Burger-s-Hut)
+The App is live at [Burger's Hut](https://burgershut.herokuapp.com/)
 
 ## Screen Shots
 
@@ -87,7 +87,7 @@ npm run dev
             <li>Use cors</li>
         </ul>
         </li>
-    <li>Responsive</li>
+    <li>Responsive  (mobile responsivenes need to be done)</li>
     <li>Lazy Loading</li>
 </ul>
 <ul>
