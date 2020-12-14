@@ -1,7 +1,7 @@
-# Burgers' Hut
+# Burgers' Hut :hamburger:
 
 > Burgers' Hut is a Cash On Delivery E-commerce Application with Realtime Order Tracking Functionalities.
-> <br> <b>Node | Express | MongoDB | WebSocket |ejs| Tailwind css</b>
+> <br> <b>Node | Express | MongoDB | WebSocket | ejs | Tailwind css</b>
 
 ## Demo
 
@@ -53,14 +53,14 @@ npm run dev
         <ul>
             <li>Burger item(s) can add to cart realtime</li>
             <li>Remove Burger item(s) from cart realtime</li>
-            <li>Update Each item price, Total Quantity, Total Price realtime  when increasing or decreasing items qunatity</li>
+            <li>Update Each item price, Total Quantity, Total Price realtime  when increasing or decreasing item qunatity</li>
             <li>Updating Total Quantity, Total Price realtime  when removing a selected item from cart</li>
         </ul>
         </li>
         <li>Realtime Order Tracking (Web Sockets):
         <ul>
             <li>Updating Admin Order list When a customer add an Order</li>
-            <li>Customer Can see Item Status On From Order the Tracker</li>
+            <li>Customer Can see Item Status On From the Order Tracker</li>
             <li>Admin can Set Order status and it will notified to customer and and update cutomer order tracker simultaneously</li>
             <li>Customer can view order Item history</li>
         </ul>
