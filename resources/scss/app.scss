@@ -243,6 +243,15 @@ section.cart {
   cursor: default;
 }
 
+.social-links {
+  margin-top: 50px;
+  a {
+    &:hover {
+      color: $primary-hover;
+    }
+  }
+}
+
 @media (max-width: 1060px) {
   .container {
     max-width: 90%;
