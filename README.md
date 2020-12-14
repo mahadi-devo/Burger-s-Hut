@@ -81,7 +81,7 @@ npm run dev
             <li>Use cors</li>
         </ul>
         </li>
-    <li>Responsive</li>
+    <li>Responsive  (mobile responsivenes need to be done)</li>
     <li>Lazy Loading</li>
 </ul>
 <ul>
