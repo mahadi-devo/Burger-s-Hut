@@ -95,7 +95,7 @@ export function initAdmin(socket) {
                     </div>
                 </td>
                 <td class="border border-red-500 px-4 py-2">
-                    ${moment(order.createdAt).format('hh:mm A')}
+                    ${moment(order.createdAt).format('LLL')}
                 </td>
             </tr>
         `;

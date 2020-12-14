@@ -31,7 +31,7 @@
                         <td class="border border-red-500 px-4 py-2 text-red-900 font-bold"><a href="/customer/orders/<%= order._id %>" class="link"><%= order._id %></a></td>
                         <td class="border border-red-500 px-4 py-2 text-center font-small"><%= order.address %></td>
                         <td class="border border-red-500 px-4 py-2 text-center font-small"><%= order.phone %></td>
-                        <td class="border border-red-500 px-4 py-2 text-center font-small"><%= moment(order.createdAt).format('hh:mm A') %></td>
+                        <td class="border border-red-500 px-4 py-2 text-center font-small"><%= moment(order.createdAt).format('LLL') %></td>
                     </tr>
                 <% }) %> 
             <% } else { %>
