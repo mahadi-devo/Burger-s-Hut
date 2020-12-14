@@ -3,7 +3,7 @@
 > Burgers' Hut is a Cash On Delivery E-commerce Application with Realtime Order Tracking Functionalities.
 > <br> <b>Node | Express | MongoDB | WebSocket | ejs | Tailwind css</b>
 
-## Demo
+## [Demo](https://burgershut.herokuapp.com/)
 
 The App is live at [Burger's Hut](https://burgershut.herokuapp.com/)
 
