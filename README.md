@@ -5,7 +5,7 @@
 
 ## Demo
 
-The App is live at [Burger's Hut](https://github.com/mahadi-devo/Burger-s-Hut)
+The App is live at [Burger's Hut](https://burgershut.herokuapp.com/)
 
 ## Login Credentials
 
