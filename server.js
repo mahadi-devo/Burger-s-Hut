@@ -3,7 +3,7 @@ const app = express();
 const ejs = require('ejs');
 const path = require('path');
 const expressLayout = require('express-ejs-layouts');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('express-flash');
@@ -19,7 +19,7 @@ const hpp = require('hpp');
 const cors = require('cors');
 
 // Load env
-dotenv.config({ path: './app/config/config.env' });
+// dotenv.config({ path: './app/config/config.env' });
 
 // DB Connection
 const url = process.env.MONGO_URI;
