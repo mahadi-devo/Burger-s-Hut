@@ -18,13 +18,13 @@ The App is live at [Burger's Hut](https://burgershut.herokuapp.com/)
 <b> Guest Role </b>
 
 <ul>
-    <li>Login username: <b>Guest</b></li>
+    <li>Login email: <b>guest@gmail.com</b></li>
     <li>Login password: <b>Guest123</b></li>
 </ul>
 <hr>
 <b> Admin Role </b>
 <ul>
-    <li>Login username: <b>Admin</b></li>
+    <li>Login email: <b>admin@gmail.com</b></li>
     <li>Login password: <b>Admin123</b></li>
 </ul>
 
