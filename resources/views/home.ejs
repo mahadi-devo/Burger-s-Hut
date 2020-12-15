@@ -15,6 +15,12 @@
             <img data-src="/img/hero-burger.png" alt="hero-image" class="lozad">
         </div>
     </div>
+    <div class="social-links-mobile hidden">
+        <div><a href="https://www.linkedin.com/in/mahadi-hassan"><i class="lab la-linkedin text-xl md:text-3xl"></i></a></div>
+        <div><a href="https://github.com/mahadi-devo"><i class="lab la-github text-xl md:text-3xl"></i></a></div>
+        <div><a href="https://www.facebook.com/profile.php?id=100012178337974"><i class="lab la-facebook text-xl md:text-3xl"></i></a></div>
+        <div><a href="https://twitter.com/Mahadihassan001"><i class="lab la-twitter text-xl md:text-3xl"></i></a></div>
+    </div>
 </section>
 <section class="menu container mx-auto py-8 mb-10">
     <div class="flex items-center justify-between mb-8">
@@ -56,7 +62,7 @@
                 <% } %>
                 <label class="text-sm">small</label>
             </div>
-            <div class="flex items-center px-2">
+            <div id="price-selector" class="flex items-center px-2">
                 <% if(queryPrice) { %>
                     <input class="mr-2 price-range" name="price[lte]" type="range" min="200" max="1000" step="100" value="<%= queryPrice %>"/>
                     <label class="text-sm">price is less than or equal to <span id="filtered-price" class="font-bold"><%= queryPrice %><span></label>
@@ -65,7 +71,7 @@
                     <label class="text-sm">price is less than or equal to <span id="filtered-price" class="font-bold">300<span></label>
                 <% } %>  
             </div>
-            <button type="submit"class="bg-blue-500 hover:bg-blue-700 text-white text-center px-4 text-sm rounded-full ml-2 py-1">filter</button>
+            <button type="submit"class="bg-blue-500 hover:bg-blue-700 text-white text-center px-4 text-sm rounded-full ml-2 py-1 my-2 md:my-0">filter</button>
             <a href="/" class="bg-transparent bg-gray-300 hover:bg-gray-400 text-black text-center px-4 text-sm rounded-full ml-2 py-1">Reset</a>
         </div>
     </form>

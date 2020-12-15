@@ -267,6 +267,19 @@ section.cart {
   .status-box ul li span:before {
     font-size: 34px;
   }
+  .logo-container {
+    width: inherit;
+    .logo {
+      width: 60px;
+    }
+  }
+  .social-links {
+    display: none;
+  }
+  .social-links-mobile {
+    display: flex;
+    padding-left: 28px;
+  }
 }
 
 @media (max-width: 870px) {
@@ -274,5 +287,22 @@ section.cart {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     border-radius: 5px;
+  }
+}
+
+@media (max-width: 640px) {
+  #filter-tab {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    border-radius: 5px;
+    div {
+      padding: 0px 30px;
+    }
+    #price-selector {
+      display: block;
+    }
+  }
+  .price-range {
+    width: 250px;
   }
 }

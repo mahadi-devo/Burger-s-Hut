@@ -19,7 +19,7 @@ const hpp = require('hpp');
 const cors = require('cors');
 
 // Load env
-// dotenv.config({ path: './app/config/config.env' });
+dotenv.config({ path: './app/config/config.env' });
 
 // DB Connection
 const url = process.env.MONGO_URI;

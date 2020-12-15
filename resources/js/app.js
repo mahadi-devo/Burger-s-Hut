@@ -10,6 +10,8 @@ let removeSelectedItemFromCart = document.querySelectorAll(
   '.remove-selected-item-from-cart'
 );
 let cardCounter = document.querySelector('#cardCounter');
+let cardCounterMobile = document.querySelector('#cardCounter-mobile');
+
 let mode;
 
 function updateCart(burger, mode) {
@@ -17,6 +19,7 @@ function updateCart(burger, mode) {
     .post('/update-cart', { burger, mode })
     .then((res) => {
       cardCounter.innerText = res.data.totalQty;
+      cardCounterMobile.innerText = res.data.totalQty;
       if (
         document.getElementById(res.data.id) != null &&
         document.getElementById('price' + res.data.id) != null
@@ -188,4 +191,13 @@ socket.on('orderUpdated', (data) => {
     text: 'Order Updated',
     progressBar: false,
   }).show();
+});
+
+// Mobile Navbar
+
+let mainNav = document.getElementById('js-menu');
+let navBarToggle = document.getElementById('js-navbar-toggle');
+
+navBarToggle.addEventListener('click', function() {
+  mainNav.classList.toggle('dropdown-show');
 });
