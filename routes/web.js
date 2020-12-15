@@ -30,6 +30,11 @@ function initRoutes(app) {
   // Admin Routes
   app.get('/admin/orders', admin, adminOrderController().index);
   app.post('/admin/order/status', admin, statusController().update);
+
+  // Instruction
+  app.get('/instructions', (req, res) => {
+    res.render('instructions');
+  });
 }
 
 module.exports = initRoutes;
